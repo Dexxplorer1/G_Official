@@ -23,7 +23,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { submitContactForm } from "@/app/actions/contact"
 
-// Generate availability for the next 30 days with all 9 time slots available every day
+// Generate availability for the next 90 days with all 9 time slots available every day
 const generateAvailability = () => {
   const availability: Record<string, string[]> = {}
   const timeSlots = [
@@ -39,7 +39,7 @@ const generateAvailability = () => {
   ]
 
   const today = new Date()
-  for (let i = 1; i <= 30; i++) {
+  for (let i = 1; i <= 90; i++) {
     const date = new Date(today)
     date.setDate(today.getDate() + i)
 
@@ -103,23 +103,32 @@ export function ContactPage() {
     return null
   }
 
-  const processFiles = useCallback((files: FileList | File[]) => {
-    const fileArray = Array.from(files)
-    const newFiles: UploadedFile[] = []
+const processFiles = useCallback((files: FileList | File[]) => {
+  const fileArray = Array.from(files)
+  const newFiles: UploadedFile[] = []
 
-    fileArray.forEach((file) => {
-      const error = validateFile(file)
-      if (!error) {
-        const id = Math.random().toString(36).substr(2, 9)
-        const preview = URL.createObjectURL(file)
-        newFiles.push({ file, preview, id })
-      } else {
-        alert(`Error with ${file.name}: ${error}`)
-      }
-    })
+  fileArray.forEach((file) => {
+    const error = validateFile(file)
+    if (!error) {
+      const id = Math.random().toString(36).substr(2, 9)
+      const preview = URL.createObjectURL(file)
+      newFiles.push({ file, preview, id })
+    } else {
+      alert(`Error with ${file.name}: ${error}`)
+    }
+  })
 
-    setUploadedFiles((prev) => [...prev, ...newFiles])
-  }, [])
+  setUploadedFiles((prev) => {
+    const totalFiles = prev.length + newFiles.length
+    if (totalFiles > 8) {
+      alert("You can upload up to 8 images only.")
+      const availableSlots = 8 - prev.length
+      return [...prev, ...newFiles.slice(0, availableSlots)]
+    }
+    return [...prev, ...newFiles]
+  })
+}, [])
+
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -278,7 +287,7 @@ export function ContactPage() {
               setSelectedTime("")
             }
           }}
-          className={`
+          className={` 
             h-12 w-full rounded-lg text-sm font-medium transition-all
             ${
               isSelected
@@ -500,17 +509,35 @@ export function ContactPage() {
                   </div>
                   <div>
                     <Label htmlFor="phone" className="text-garbagio-background font-semibold">
-                      Phone Number *
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="mt-1 border-gray-300 focus:border-garbagio-accent focus:ring-garbagio-accent"
-                      placeholder="(239) 555-0123"
+  Phone Number *
+</Label>
+<Input
+  id="phone"
+  name="phone"
+  type="tel"
+  required
+  value={formData.phone}
+  onChange={(e) => {
+    const rawValue = e.target.value.replace(/\D/g, "").slice(0, 10)
+    let formatted = rawValue
+
+    if (rawValue.length >= 7) {
+      formatted = `${rawValue.slice(0, 3)}-${rawValue.slice(3, 6)}-${rawValue.slice(6)}`
+    } else if (rawValue.length >= 4) {
+      formatted = `${rawValue.slice(0, 3)}-${rawValue.slice(3)}`
+    }
+
+    handleInputChange({
+      ...e,
+      target: {
+        ...e.target,
+        name: "phone",
+        value: formatted,
+      },
+    })
+  }}
+  className="mt-1 border-gray-300 focus:border-garbagio-accent focus:ring-garbagio-accent"
+  placeholder="239-555-0123"
                     />
                   </div>
                 </div>
@@ -548,20 +575,40 @@ export function ContactPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="text-garbagio-background font-semibold">
-                    Message / Job Description *
-                  </Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="mt-1 border-gray-300 focus:border-garbagio-accent focus:ring-garbagio-accent"
-                    placeholder="Describe what you need removed (furniture, appliances, cleanout, etc.) and any special requirements..."
-                  />
-                </div>
+  <Label htmlFor="message" className="text-garbagio-background font-semibold">
+    Message / Job Description *
+  </Label>
+  <Textarea
+    id="message"
+    name="message"
+    required
+    value={formData.message}
+    onChange={(e) => {
+      const input = e.target.value
+      const words = input.trim().split(/\s+/)
+      if (words.length <= 200) {
+        handleInputChange(e)
+      } else {
+        const trimmed = words.slice(0, 200).join(" ")
+        handleInputChange({
+          ...e,
+          target: {
+            ...e.target,
+            value: trimmed,
+            name: "message",
+          },
+        })
+      }
+    }}
+    rows={4}
+    className="mt-1 border-gray-300 focus:border-garbagio-accent focus:ring-garbagio-accent"
+    placeholder="Describe what you need removed (furniture, appliances, cleanout, etc.) and any special requirements..."
+  />
+  <p className="text-xs text-gray-500 mt-1">
+    {formData.message.trim().split(/\s+/).filter(Boolean).length}/200 words
+  </p>
+</div>
+
 
                 <div>
                   <Label htmlFor="photos" className="text-garbagio-background font-semibold">
@@ -587,14 +634,16 @@ export function ContactPage() {
                         >
                           <span>Upload photos</span>
                           <input
-                            id="photos"
-                            name="photos"
-                            type="file"
-                            multiple
-                            accept="image/*"
-                            className="sr-only"
-                            onChange={handleFileSelect}
-                          />
+  id="photos"
+  name="photos"
+  type="file"
+  multiple
+  accept="image/*"
+  className="sr-only"
+  onChange={handleFileSelect}
+  disabled={uploadedFiles.length >= 8}
+/>
+
                         </label>
                         <p className="pl-1">or drag and drop</p>
                       </div>
