@@ -80,9 +80,35 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
               </div>
             </div>
 
+            {/* Enhanced Fade Overlay - Left to right fade + border vignette */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `
+                  linear-gradient(to right, 
+                    rgba(42, 39, 38, 0.85) 0%, 
+                    rgba(42, 39, 38, 0.6) 20%, 
+                    rgba(42, 39, 38, 0.3) 40%, 
+                    rgba(42, 39, 38, 0.1) 60%, 
+                    rgba(42, 39, 38, 0) 80%),
+                  linear-gradient(to bottom, 
+                    rgba(42, 39, 38, 0.4) 0%, 
+                    rgba(42, 39, 38, 0) 15%, 
+                    rgba(42, 39, 38, 0) 85%, 
+                    rgba(42, 39, 38, 0.4) 100%),
+                  linear-gradient(to right, 
+                    rgba(42, 39, 38, 0.3) 0%, 
+                    rgba(42, 39, 38, 0) 8%, 
+                    rgba(42, 39, 38, 0) 92%, 
+                    rgba(42, 39, 38, 0.3) 100%)
+                `,
+                zIndex: 5,
+              }}
+            />
+
             {/* Slider Handle */}
             <div
-              className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-10 flex items-center justify-center"
+              className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 flex items-center justify-center"
               style={{ left: `${sliderPosition}%` }}
               onMouseDown={(e) => {
                 const rect = e.currentTarget.parentElement!.getBoundingClientRect()
@@ -104,7 +130,7 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
             </div>
           </>
         ) : (
-          // Single Image Display
+          // Single Image Display with same fade effects
           <div className="absolute inset-0">
             <Image
               src={currentImage.single || "/placeholder.svg"}
@@ -116,6 +142,31 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
               }}
               priority
             />
+            {/* Apply same fade effect to single images */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `
+                  linear-gradient(to right, 
+                    rgba(42, 39, 38, 0.7) 0%, 
+                    rgba(42, 39, 38, 0.4) 25%, 
+                    rgba(42, 39, 38, 0.2) 50%, 
+                    rgba(42, 39, 38, 0.1) 75%, 
+                    rgba(42, 39, 38, 0) 100%),
+                  linear-gradient(to bottom, 
+                    rgba(42, 39, 38, 0.3) 0%, 
+                    rgba(42, 39, 38, 0) 15%, 
+                    rgba(42, 39, 38, 0) 85%, 
+                    rgba(42, 39, 38, 0.3) 100%),
+                  linear-gradient(to right, 
+                    rgba(42, 39, 38, 0.25) 0%, 
+                    rgba(42, 39, 38, 0) 8%, 
+                    rgba(42, 39, 38, 0) 92%, 
+                    rgba(42, 39, 38, 0.25) 100%)
+                `,
+                zIndex: 5,
+              }}
+            />
           </div>
         )}
 
@@ -124,14 +175,14 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
           <>
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-garbagio-background/80 text-garbagio-gold p-2 rounded-full hover:bg-garbagio-background transition-colors z-20"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-garbagio-background/80 text-garbagio-gold p-2 rounded-full hover:bg-garbagio-background transition-colors z-30"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-garbagio-background/80 text-garbagio-gold p-2 rounded-full hover:bg-garbagio-background transition-colors z-20"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-garbagio-background/80 text-garbagio-gold p-2 rounded-full hover:bg-garbagio-background transition-colors z-30"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />
@@ -141,7 +192,7 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
 
         {/* Image Counter */}
         {images.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-garbagio-background/80 text-garbagio-gold px-3 py-1 rounded-full text-sm z-20">
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-garbagio-background/80 text-garbagio-gold px-3 py-1 rounded-full text-sm z-30">
             {currentIndex + 1} / {images.length}
           </div>
         )}

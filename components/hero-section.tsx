@@ -51,9 +51,25 @@ export function HeroSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 text-center lg:text-left">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-garbagio-gold">
-              Cleanouts, Hauling, and Junk Removal Done Right
-              <div className="flex items-center justify-center lg:justify-start my-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-garbagio-gold leading-tight">
+              <div className="flex flex-col space-y-2">
+                <span className="flex items-center justify-center lg:justify-start font-black">
+                  <span className="text-garbagio-accent font-black text-[1.2em] mr-3">•</span>
+                  Cleanouts
+                </span>
+                <span className="flex items-center justify-center lg:justify-start font-black">
+                  <span className="text-garbagio-accent font-black text-[1.2em] mr-3">•</span>
+                  Hauling
+                </span>
+                <span className="flex items-center justify-center lg:justify-start font-black">
+                  <span className="text-garbagio-accent font-black text-[1.2em] mr-3">•</span>
+                  Junk Removal
+                </span>
+                <span className="text-garbagio-accent font-black mt-4" style={{ fontSize: "1.1em" }}>
+                  Done Right
+                </span>
+              </div>
+              <div className="flex items-center justify-center lg:justify-start my-6">
                 <div className="flex-1 h-1 bg-gradient-to-r from-transparent via-garbagio-accent to-garbagio-gold max-w-xs"></div>
                 <div className="mx-4">
                   <div className="w-3 h-3 bg-garbagio-accent rounded-full"></div>
@@ -97,7 +113,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-garbagio-gold text-garbagio-gold hover:bg-garbagio-gold/10"
+                className="border-garbagio-gold text-garbagio-gold hover:bg-garbagio-gold/10 bg-transparent"
                 asChild
               >
                 <Link href="/services">
