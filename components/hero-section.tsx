@@ -104,10 +104,10 @@ export function HeroSection() {
                 className="bg-garbagio-accent hover:bg-garbagio-accent/90 text-white group relative transition-all duration-300"
                 asChild
               >
-                <a href="tel:2392306200" className="flex items-center justify-center">
+                <a href="tel:2394861170" className="flex items-center justify-center">
                   <Phone className="mr-2 h-5 w-5 animate-pulse" />
                   <span className="group-hover:hidden">Call Now</span>
-                  <span className="hidden group-hover:inline font-bold">(239) 230-6200</span>
+                  <span className="hidden group-hover:inline font-bold">(239) 486-1170</span>
                 </a>
               </Button>
               <Button

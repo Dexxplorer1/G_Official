@@ -149,11 +149,11 @@ export function FAQSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:2392306200"
+                href="tel:2394861170"
                 className="inline-flex items-center justify-center px-6 py-3 bg-garbagio-accent hover:bg-garbagio-accent/90 text-white font-semibold rounded-lg transition-colors"
               >
                 <Phone className="mr-2 h-4 w-4" />
-                (239) 230-6200
+                (239) 486-1170
               </a>
               <a
                 href="/contact"

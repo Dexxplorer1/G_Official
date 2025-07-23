@@ -19,9 +19,11 @@ export function Footer() {
                 quality={100}
                 sizes="(max-width: 768px) 200px, 240px"
                 style={{
-                  imageRendering: "crisp-edges",
-                  WebkitImageRendering: "crisp-edges",
-                }}
+  imageRendering: "crisp-edges",
+  // @ts-ignore
+  WebkitImageRendering: "crisp-edges",
+}}
+
               />
             </Link>
             <p className="text-garbagio-light/70">
@@ -109,8 +111,8 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-garbagio-accent mr-2" />
-                <a href="tel:2392306200" className="text-garbagio-light/70 hover:text-garbagio-accent">
-                  (239) 230-6200
+                <a href="tel:2394861170" className="text-garbagio-light/70 hover:text-garbagio-accent">
+                  (239) 486-1170
                 </a>
               </li>
               <li className="flex items-center">

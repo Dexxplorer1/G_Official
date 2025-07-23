@@ -5,7 +5,13 @@ import { EstimateForm } from "@/components/estimate-form"
 export const metadata = {
   title: "Get a Free Estimate | Garbaggio Junk Removal",
   description: "Request your free junk removal estimate from Garbaggio. Fast, friendly, and local to Southwest Florida.",
-}
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 
 export default function EstimatePage() {
   return (

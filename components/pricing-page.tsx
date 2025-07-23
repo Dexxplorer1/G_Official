@@ -226,7 +226,7 @@ export function PricingPage() {
                   className="border-garbagio-gold text-garbagio-gold hover:bg-garbagio-gold/10"
                   asChild
                 >
-                  <a href="tel:2392306200">Call (239) 230-6200</a>
+                  <a href="tel:2394861170">Call (239) 486-1170</a>
                 </Button>
               </div>
             </div>

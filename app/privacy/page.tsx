@@ -64,10 +64,10 @@ export default function PrivacyPage() {
                     </a>{" "}
                     or call{" "}
                     <a
-                      href="tel:2392306200"
+                      href="tel:2394861170"
                       className="text-garbagio-accent hover:text-garbagio-accent/80 font-semibold"
                     >
-                      (239) 230-6200
+                      (239) 486-1170
                     </a>
                     .
                   </p>
@@ -107,10 +107,10 @@ export default function PrivacyPage() {
                     <strong className="text-garbagio-background">Contact Us:</strong> If you have any questions or
                     concerns about your privacy or this policy, please contact Garbaggio Junk Removal at{" "}
                     <a
-                      href="tel:2392306200"
+                      href="tel:2394861170"
                       className="text-garbagio-accent hover:text-garbagio-accent/80 font-semibold"
                     >
-                      (239) 230-6200
+                      (239) 486-1170
                     </a>{" "}
                     or{" "}
                     <a

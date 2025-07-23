@@ -37,7 +37,7 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
   const currentImage = images[currentIndex]
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full pb-8 md:pb-4">
       {/* Before/After Container */}
       <div className="relative h-full rounded-lg overflow-hidden shadow-lg">
         {currentImage.type === "before-after" ? (
@@ -204,9 +204,9 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
         <p className="text-garbagio-light/80 text-sm">{currentImage.description}</p>
       </div>
 
-      {/* Dots Indicator */}
+      {/* Dots Indicator with extra mobile spacing */}
       {images.length > 1 && (
-        <div className="flex justify-center mt-4 space-x-2">
+        <div className="flex justify-center mt-6 md:mt-4 space-x-3 pb-2">
           {images.map((_, index) => (
             <button
               key={index}
@@ -214,7 +214,7 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
                 setCurrentIndex(index)
                 setSliderPosition(50)
               }}
-              className={`w-2 h-2 rounded-full transition-colors ${
+              className={`w-3 h-3 md:w-2 md:h-2 rounded-full transition-colors ${
                 index === currentIndex ? "bg-garbagio-accent" : "bg-garbagio-brown/50"
               }`}
               aria-label={`Go to image ${index + 1}`}

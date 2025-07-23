@@ -132,10 +132,10 @@ export default function TermsPage() {
                     <strong className="text-garbagio-background">Contact Information:</strong> If you have any questions
                     regarding these Terms, service issues, or other inquiries, please contact Garbaggio Junk Removal at{" "}
                     <a
-                      href="tel:2392306200"
+                      href="tel:2394861170"
                       className="text-garbagio-accent hover:text-garbagio-accent/80 font-semibold"
                     >
-                      (239) 230-6200
+                      (239) 486-1170
                     </a>{" "}
                     or{" "}
                     <a

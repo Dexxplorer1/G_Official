@@ -71,7 +71,7 @@ export function ContactPage() {
                 Thank you for contacting Garbaggio Junk Removal. We've received your message and will get back to you
                 within 24 hours.
               </p>
-              <p className="text-green-600 font-semibold">For immediate assistance, call us at (239) 230-6200</p>
+              <p className="text-green-600 font-semibold">For immediate assistance, call us at (239) 486-1170</p>
             </div>
           </div>
         </div>
@@ -106,10 +106,10 @@ export function ContactPage() {
                   <div>
                     <h3 className="text-xl font-bold text-garbagio-background">Phone</h3>
                     <a
-                      href="tel:2392306200"
+                      href="tel:2394861170"
                       className="text-2xl font-bold text-garbagio-accent hover:text-garbagio-accent/80 transition-colors"
                     >
-                      (239) 230-6200
+                      (239) 486-1170
                     </a>
                   </div>
                 </div>
@@ -350,9 +350,9 @@ export function ContactPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-garbagio-accent hover:bg-garbagio-accent/90 text-white" asChild>
-                  <a href="tel:2392306200">
+                  <a href="tel:2394861170">
                     <Phone className="mr-2 h-4 w-4" />
-                    Call (239) 230-6200
+                    Call (239) 486-1170
                   </a>
                 </Button>
                 <Button

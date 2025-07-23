@@ -470,7 +470,7 @@ export function ServicesPage() {
               variant="outline"
               className="border-garbagio-gold text-garbagio-background hover:bg-garbagio-gold/10"
             >
-              Call (239) 230-6200
+              Call (239) 486-1170
             </Button>
           </div>
         </div>

@@ -21,10 +21,10 @@ export function CTASection() {
               className="border-garbagio-gold text-garbagio-gold hover:bg-garbagio-gold/20 hover:text-white group relative"
               asChild
             >
-              <a href="tel:2392306200">
+              <a href="tel:2394861170">
                 <Phone className="mr-2 h-4 w-4" />
                 <span className="group-hover:hidden">Call Now</span>
-                <span className="hidden group-hover:inline">(239) 230-6200</span>
+                <span className="hidden group-hover:inline">(239) 486-1170</span>
               </a>
             </Button>
           </div>

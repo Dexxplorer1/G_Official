@@ -6,7 +6,13 @@ import { Footer } from "@/components/footer"
 export const metadata = {
   title: "Photo Gallery - Garbaggio Junk Removal",
   description: "See our professional junk removal work throughout Lee, Collier, and Charlotte counties in Florida.",
-}
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 
 export default function GalleryPage() {
   return (

@@ -43,13 +43,11 @@ const generateAvailability = () => {
     const date = new Date(today)
     date.setDate(today.getDate() + i)
 
-    // Skip Sundays (day 0) for this example
-    if (date.getDay() !== 0) {
-      const dateString = date.toISOString().split("T")[0]
-      // Make ALL time slots available for every date
-      availability[dateString] = [...timeSlots]
-    }
-  }
+// Include ALL days of the week (no filtering)
+  const dateString = date.toISOString().split("T")[0]
+  // Make ALL time slots available for every date
+  availability[dateString] = [...timeSlots]
+}
 
   return availability
 }
@@ -360,7 +358,7 @@ const processFiles = useCallback((files: FileList | File[]) => {
                   </p>
                 </div>
               )}
-              <p className="text-green-600 font-semibold">For immediate assistance, call us at (239) 230-6200</p>
+              <p className="text-green-600 font-semibold">For immediate assistance, call us at (239) 486-1170</p>
             </div>
           </div>
         </div>
@@ -395,10 +393,10 @@ const processFiles = useCallback((files: FileList | File[]) => {
                   <div>
                     <h3 className="text-xl font-bold text-garbagio-background">Phone</h3>
                     <a
-                      href="tel:2392306200"
+                      href="tel:2394861170"
                       className="text-2xl font-bold text-garbagio-accent hover:text-garbagio-accent/80 transition-colors"
                     >
-                      (239) 230-6200
+                      (239) 486-1170
                     </a>
                   </div>
                 </div>
@@ -777,9 +775,9 @@ const processFiles = useCallback((files: FileList | File[]) => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-garbagio-accent hover:bg-garbagio-accent/90 text-white" asChild>
-                  <a href="tel:2392306200">
+                  <a href="tel:2394861170">
                     <Phone className="mr-2 h-4 w-4" />
-                    Call (239) 230-6200
+                    Call (239) 486-1170
                   </a>
                 </Button>
                 <Button

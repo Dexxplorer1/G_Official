@@ -9,6 +9,11 @@ export const metadata = {
     "View our transparent, competitive pricing for junk removal services in Southwest Florida. Volume-based pricing and flat-rate individual items.",
 }
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function Pricing() {
   return (
     <main className="min-h-screen flex flex-col">

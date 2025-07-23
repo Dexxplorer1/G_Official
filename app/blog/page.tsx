@@ -117,6 +117,11 @@ export const metadata = {
     "Read our latest tips, news, and insights about junk removal, decluttering, and home organization in Southwest Florida.",
 }
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function BlogPage() {
   return (
     <main className="min-h-screen flex flex-col">
@@ -327,9 +332,9 @@ export default function BlogPage() {
                           </p>
                           <div className="flex flex-col sm:flex-row gap-3 justify-center">
                             <Button className="bg-garbagio-accent hover:bg-garbagio-accent/90 text-white" asChild>
-                              <a href="tel:2392306200">
+                              <a href="tel:2394861170">
                                 <Phone className="mr-2 h-4 w-4" />
-                                Call (239) 230-6200
+                                Call (239) 486-1170
                               </a>
                             </Button>
                             <Button
@@ -360,9 +365,9 @@ export default function BlogPage() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button size="lg" className="bg-garbagio-accent hover:bg-garbagio-accent/90 text-white" asChild>
-                      <a href="tel:2392306200">
+                      <a href="tel:2394161170">
                         <Phone className="mr-2 h-4 w-4" />
-                        Call (239) 230-6200
+                        Call (239) 486-1170
                       </a>
                     </Button>
                     <Button

@@ -7,7 +7,12 @@ export const metadata = {
   title: "Services - Cleanouts & Junk Removal | Garbaggio",
   description:
     "Comprehensive junk removal and cleanout services in Southwest Florida. From residential cleanouts to specialized item removal, we handle it all.",
-}
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function Services() {
   return (
