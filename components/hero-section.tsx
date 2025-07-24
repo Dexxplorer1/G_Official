@@ -5,13 +5,22 @@ import { BeforeAfterSlider } from "./before-after-slider"
 
 const beforeAfterImages = [
   {
+    before: "/images/storage-before-new.jpg",
+    after: "/images/storage-after-new.jpg",
+    title: "Storage Unit Transformation",
+    description: "Complete storage unit cleanout - from cluttered chaos to organized, usable space in one service.",
+    type: "before-after" as const,
+    beforePosition: "center center",
+    afterPosition: "center center",
+  },
+  {
     before: "/images/before-1.jpg",
     after: "/images/after-1.jpg",
     title: "Storage Unit Cleanout",
     description: "Complete storage unit transformation - from cluttered chaos to clean, usable space.",
     type: "before-after" as const,
     beforePosition: "center center",
-    afterPosition: "center center", // Centered to show the interior of the unit clearly
+    afterPosition: "center center",
   },
   {
     before: "/images/before-2.jpg",
@@ -19,8 +28,8 @@ const beforeAfterImages = [
     title: "Garage Cleanout",
     description: "Professional garage cleanout - transforming cluttered spaces into organized, functional areas.",
     type: "before-after" as const,
-    beforePosition: "center center", // Positioned to show the same garage angle
-    afterPosition: "center center", // Matching position to show it's the same location
+    beforePosition: "center center",
+    afterPosition: "center center",
   },
   {
     single: "/images/trailer-packed.jpg",
@@ -47,9 +56,9 @@ const beforeAfterImages = [
 
 export function HeroSection() {
   return (
-    <section className="relative bg-garbagio-background py-12 md:py-16 lg:py-24 overflow-x-hidden">
+    <section className="relative bg-garbagio-background py-12 md:py-16 lg:py-24 overflow-x-hidden pt-16 md:pt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div className="space-y-6 text-center lg:text-left">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-garbagio-gold leading-tight">
               <div className="flex flex-col space-y-2">
@@ -101,19 +110,18 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
               <Button
                 size="lg"
-                className="bg-garbagio-accent hover:bg-garbagio-accent/90 text-white group relative transition-all duration-300"
+                className="bg-garbagio-accent hover:bg-garbagio-accent/90 text-white group relative transition-all duration-300 hover:scale-105"
                 asChild
               >
                 <a href="tel:2394861170" className="flex items-center justify-center">
                   <Phone className="mr-2 h-5 w-5 animate-pulse" />
-                  <span className="group-hover:hidden">Call Now</span>
-                  <span className="hidden group-hover:inline font-bold">(239) 486-1170</span>
+                  <span>(239) 486-1170</span>
                 </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-garbagio-gold text-garbagio-gold hover:bg-garbagio-gold/10 bg-transparent"
+                className="border-garbagio-gold text-garbagio-gold hover:border-garbagio-accent hover:text-garbagio-accent hover:bg-transparent bg-transparent transition-all duration-300"
                 asChild
               >
                 <Link href="/services">
@@ -122,7 +130,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] mt-6 lg:mt-0">
+          <div className="relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] xl:h-[650px] mt-6 lg:mt-0 lg:ml-8">
             <BeforeAfterSlider images={beforeAfterImages} />
           </div>
         </div>

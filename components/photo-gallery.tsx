@@ -15,6 +15,20 @@ interface GalleryImage {
 
 const galleryImages: GalleryImage[] = [
   {
+    src: "/images/storage-before-new.jpg",
+    alt: "Storage unit before cleanout - cluttered with furniture and boxes",
+    title: "Storage Unit - Before",
+    category: "Storage Cleanouts",
+    description: "Completely packed storage unit requiring full cleanout service.",
+  },
+  {
+    src: "/images/storage-after-new.jpg",
+    alt: "Storage unit after cleanout - clean and empty",
+    title: "Storage Unit - After",
+    category: "Storage Cleanouts",
+    description: "Same storage unit completely cleaned and ready for use.",
+  },
+  {
     src: "/images/before-1.jpg",
     alt: "Storage unit before cleanout",
     title: "Storage Unit - Before",

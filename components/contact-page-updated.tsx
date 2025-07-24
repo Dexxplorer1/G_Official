@@ -745,22 +745,25 @@ const processFiles = useCallback((files: FileList | File[]) => {
                 </div>
 
                 <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-garbagio-accent hover:bg-garbagio-accent/90 text-white text-lg py-6 h-auto"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Sending Message...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-5 w-5" />
-                      Send Message & Get Free Estimate
-                    </>
-                  )}
-                </Button>
+  type="submit"
+  disabled={isSubmitting}
+  className="w-full bg-garbagio-accent hover:bg-garbagio-accent/90 text-white text-lg py-2 px-2 sm:py-6 sm:px-6 h-auto leading-tight"
+>
+  {isSubmitting ? (
+    <div className="flex items-center justify-center gap-1 sm:gap-2">
+      <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white"></div>
+      <span className="text-sm sm:text-lg whitespace-nowrap">Sending Message...</span>
+    </div>
+  ) : (
+    <div className="flex items-center justify-center gap-1 sm:gap-2">
+      <Send className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+      <span className="text-sm sm:text-lg leading-tight">
+        <span className="block sm:hidden">Send & Get Estimate</span>
+        <span className="hidden sm:block">Submit & Get a Free Estimate</span>
+      </span>
+    </div>
+  )}
+</Button>
               </form>
             </div>
           </div>
