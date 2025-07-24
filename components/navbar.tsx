@@ -20,7 +20,7 @@ export function Navbar() {
           {/* Mobile Phone Icon (left) */}
           <div className="md:hidden z-60">
             <a
-              href="tel:2392306200"
+              href="tel:2394861170"
               className="flex items-center justify-center w-10 h-10 bg-garbagio-accent rounded-full text-white"
               aria-label="Call us"
             >
