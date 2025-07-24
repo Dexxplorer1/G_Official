@@ -108,8 +108,8 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
 
             {/* Slider Handle */}
             <div
-              className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 flex items-center justify-center"
-              style={{ left: `${sliderPosition}%` }}
+              className="absolute top-0 bottom-0 w-1 cursor-ew-resize z-20 flex items-center justify-center bg-garbagio-accent"
+  style={{ left: `${sliderPosition}%` }}
               onMouseDown={(e) => {
                 const rect = e.currentTarget.parentElement!.getBoundingClientRect()
                 const handleMouseMove = (e: MouseEvent) => {
@@ -124,9 +124,7 @@ export function BeforeAfterSlider({ images }: BeforeAfterSliderProps) {
                 document.addEventListener("mouseup", handleMouseUp)
               }}
             >
-              <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <div className="w-1 h-4 bg-gray-400 rounded"></div>
-              </div>
+             
             </div>
           </>
         ) : (
