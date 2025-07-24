@@ -5,21 +5,21 @@ const testimonials = [
     name: "Sarah J.",
     location: "Naples, FL",
     quote:
-      "The team was prompt, professional, and efficient. They removed all my old furniture and debris in no time. Highly recommend!",
+      "Wow! These guys were prompt, professional, and efficient. They removed all my old furniture and cleared the debris in an hour. Highly recommend!",
     rating: 5,
   },
   {
     name: "Michael R.",
     location: "Fort Myers, FL",
     quote:
-      "I was renovating my kitchen and needed construction debris removed quickly. They came the same day and cleared everything out. Great service!",
+      "I was renovating my kitchen and needed construction debris removed quickly. Garbaggio came out the same day and cleared everything out. Great service!",
     rating: 5,
   },
   {
     name: "Jennifer W.",
     location: "Port Charlotte, FL",
     quote:
-      "After my parents downsized, we had a lot of items to dispose of. The team was respectful, careful, and thorough. Will definitely use again.",
+      "After my parents downsized, we had a lot of stuff to get rid of. These men were respectful, careful, and hard working. We'll definitely use again.",
     rating: 5,
   },
 ]
