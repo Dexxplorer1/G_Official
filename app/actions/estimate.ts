@@ -3,11 +3,10 @@
 export async function submitEstimateForm(formData: FormData) {
   try {
     // Send FormData payload directly to the API route
-    const res = await fetch("/api/send-estimate", {
-
-      method: "POST",
-      body: formData,
-    });
+const res = await fetch(`${process.env.SITE_URL}/api/send-estimate`, {
+  method: "POST",
+  body: formData,
+});
 
     if (!res.ok) {
       return {
