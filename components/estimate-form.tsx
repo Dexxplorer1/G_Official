@@ -136,7 +136,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSubmitError("Something went wrong. Please try again.")
       }
     } catch (error) {
-      setSubmitError("Submission failed. Please try again.")
+      setSubmitError("Submission failed. Please detach photos and try again.")
     } finally {
       setIsSubmitting(false)
     }

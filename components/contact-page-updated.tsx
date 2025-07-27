@@ -212,7 +212,7 @@ const processFiles = useCallback((files: FileList | File[]) => {
         setSubmitError(result.error || "Failed to submit form. Please try again.")
       }
     } catch (error) {
-      setSubmitError("An unexpected error occurred. Please try again or call us directly.")
+      setSubmitError("An error occurred. Please detach images or call us directly.")
     } finally {
       setIsSubmitting(false)
     }
