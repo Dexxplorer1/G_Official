@@ -25,17 +25,22 @@ export default function VirtualCard() {
         <a href="https://garbaggioservices.com" target="_blank" className="w-full bg-[#f5c97b] text-black py-2 rounded-lg text-center font-semibold text-base hover:bg-[#f0bd5e] transition">Visit Website</a>
       </div>
 
+      {/* Service Area Header Bar */}
+      <div className="w-full max-w-sm h-1 mt-10 mb-4 bg-[#93867f] rounded"></div>
+
       {/* Service Area */}
-      <p className="text-lg font-extrabold text-[#e05252] mt-8 text-center tracking-wide uppercase">Serving All of Southwest Florida</p>
+      <p className="text-2xl font-black text-[#e05252] text-center tracking-wider uppercase px-4">
+        Serving <span className="text-[#f5c97b]">All</span> of Southwest Florida
+      </p>
 
       {/* QR Code */}
-      <div className="mt-4 flex flex-col items-center">
+      <div className="mt-2 flex flex-col items-center">
         <Image
           src="/qr-contact.png"
           alt="QR code to contact page"
           width={140}
           height={140}
-          className="rounded-md shadow-lg"
+          className="shadow-lg"
         />
       </div>
     </main>
