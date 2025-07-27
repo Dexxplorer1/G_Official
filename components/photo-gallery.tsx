@@ -89,7 +89,7 @@ const galleryImages: GalleryImage[] = [
     alt: "Efficiently packed trailer",
     title: "Efficient Loading",
     category: "Our Process",
-    description: "Maximizing space in our trailers for cost-effective service.",
+    description: "Bottom layer down, now for the top load.",
   },
   {
     src: "/images/dump-site-1.jpg",

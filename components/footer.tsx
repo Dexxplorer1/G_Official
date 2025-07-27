@@ -125,6 +125,17 @@ export function Footer() {
                 </a>
               </li>
             </ul>
+
+        {/* QR Code */}
+            <div className="mt-6 flex justify-start">
+              <Image
+                src="/images/footer-qr-code.png"
+                alt="QR Code to visit Garbaggio website"
+                width={80}
+                height={80}
+                className="rounded-md"
+              />
+            </div>
           </div>
         </div>
 

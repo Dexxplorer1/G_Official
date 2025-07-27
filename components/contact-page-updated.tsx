@@ -22,6 +22,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { submitContactForm } from "@/app/actions/contact"
+import { ShareCTA } from "./share-cta"
 
 // Generate availability for the next 90 days with all 9 time slots available every day
 const generateAvailability = () => {
@@ -471,6 +472,9 @@ const processFiles = useCallback((files: FileList | File[]) => {
                   </div>
                 </div>
               </div>
+
+              {/* Share CTA in sidebar */}
+              <ShareCTA variant="compact" />
             </div>
 
             {/* Contact Form */}

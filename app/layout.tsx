@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Garbaggio - Cleanouts, Hauling, and Junk Removal Done Right",
-  description: "Professional junk removal services serving all of Southwest Florida since 1999",
+  description: "Professional junk removal services serving all of Southwest Florida",
   viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
   generator: "v0.dev"
 }
