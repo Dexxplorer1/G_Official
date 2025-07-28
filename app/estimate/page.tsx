@@ -5,6 +5,9 @@ import { EstimateForm } from "@/components/estimate-form"
 export const metadata = {
   title: "Get a Free Estimate | Garbaggio Junk Removal",
   description: "Request your free junk removal estimate from Garbaggio. Fast, friendly, and local to Southwest Florida.",
+  alternates: {
+    canonical: "https://www.garbaggioservices.com/estimate",
+  },
 };
 
 export const viewport = {
@@ -12,12 +15,11 @@ export const viewport = {
   initialScale: 1,
 };
 
-
 export default function EstimatePage() {
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <div className="flex-1">
         {/* Header section */}
         <section className="py-16 bg-gradient-to-b from-garbagio-light to-white">
@@ -40,5 +42,5 @@ export default function EstimatePage() {
 
       <Footer />
     </main>
-  )
+  );
 }

@@ -7,6 +7,14 @@ import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { ShareCTA } from "@/components/share-cta"
 
+export const metadata = {
+  title: "Garbaggio Junk Removal – Junk Gone. Job Done.",
+  description: "Southwest Florida's fast, reliable junk removal service. Book online or get a free estimate today.",
+  alternates: {
+    canonical: "https://www.garbaggioservices.com",
+  },
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
@@ -16,8 +24,8 @@ export default function Home() {
       <HowItWorks />
       <Testimonials />
       <CTASection />
-       <ShareCTA variant="floating" />
+      <ShareCTA variant="floating" />
       <Footer />
     </main>
-  )
+  );
 }
