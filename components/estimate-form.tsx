@@ -9,6 +9,8 @@ import {
   X,
   CheckCircle,
 } from "lucide-react"
+import imageCompression from "browser-image-compression"
+import { submitEstimateForm } from "@/app/actions/estimate"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -20,7 +22,6 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select"
-import { submitEstimateForm } from "@/app/actions/estimate"
 
 const generateAvailability = () => {
   const availability: Record<string, string[]> = {}
@@ -53,7 +54,6 @@ interface EstimateFormProps {
 }
 
 export function EstimateForm({ onClose, isModal = false }: EstimateFormProps) {
-
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -74,19 +74,19 @@ export function EstimateForm({ onClose, isModal = false }: EstimateFormProps) {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (e.target.files) {
-    const newFiles = Array.from(e.target.files)
-    const totalFiles = [...selectedFiles, ...newFiles]
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files)
+      const totalFiles = [...selectedFiles, ...newFiles]
 
-    if (totalFiles.length > 8) {
-      alert("You can upload a maximum of 8 images.")
-      return
+      if (totalFiles.length > 8) {
+        alert("You can upload a maximum of 8 images.")
+        return
+      }
+
+      setSelectedFiles(totalFiles)
     }
-
-    setSelectedFiles(totalFiles)
   }
-}
 
   const removeFile = (index: number) => {
     setSelectedFiles((prev) => prev.filter((_, i) => i !== index))
@@ -108,6 +108,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitError("")
+
     try {
       const payload = new FormData()
       payload.append("fullName", formData.fullName)
@@ -117,7 +118,23 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       payload.append("message", formData.message)
       payload.append("preferredDate", selectedDate)
       payload.append("preferredTime", selectedTime)
-      selectedFiles.forEach((file) => payload.append("images", file))
+
+      // Compress large images before adding to FormData
+const compressionOptions = {
+  maxSizeMB: 1.5,
+  maxWidthOrHeight: 1920,
+  useWebWorker: true,
+}
+
+for (const file of selectedFiles) {
+  try {
+    const compressed = await imageCompression(file, compressionOptions)
+    payload.append("images", compressed)
+  } catch (err) {
+    console.error(`Failed to compress ${file.name}:`, err)
+    payload.append("images", file) // fallback to original
+  }
+}
 
       const res = await submitEstimateForm(payload)
       if (res.success) {
@@ -136,6 +153,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSubmitError("Something went wrong. Please try again.")
       }
     } catch (error) {
+      console.error("Submission failed:", error)
       setSubmitError("Submission failed. Please detach photos and try again.")
     } finally {
       setIsSubmitting(false)

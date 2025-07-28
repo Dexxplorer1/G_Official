@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import imageCompression from "browser-image-compression"
 import { useState, useCallback } from "react"
 import {
   Phone,
@@ -43,12 +43,9 @@ const generateAvailability = () => {
   for (let i = 1; i <= 90; i++) {
     const date = new Date(today)
     date.setDate(today.getDate() + i)
-
-// Include ALL days of the week (no filtering)
-  const dateString = date.toISOString().split("T")[0]
-  // Make ALL time slots available for every date
-  availability[dateString] = [...timeSlots]
-}
+    const dateString = date.toISOString().split("T")[0]
+    availability[dateString] = [...timeSlots]
+  }
 
   return availability
 }
@@ -80,42 +77,42 @@ export function ContactPage() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  // File upload handlers
   const validateFile = (file: File): string | null => {
     const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/heic", "image/heif"]
     const maxSize = 10 * 1024 * 1024 // 10MB
-
-    if (!validTypes.includes(file.type.toLowerCase())) {
-      return "Please upload JPEG, PNG, or HEIC images only."
-    }
-
-    if (file.size > maxSize) {
-      return "File size must be less than 10MB."
-    }
-
+    if (!validTypes.includes(file.type.toLowerCase())) return "Please upload JPEG, PNG, or HEIC images only."
+    if (file.size > maxSize) return "File size must be less than 10MB."
     return null
   }
 
-const processFiles = useCallback((files: FileList | File[]) => {
+const processFiles = useCallback(async (files: FileList | File[]) => {
   const fileArray = Array.from(files)
   const newFiles: UploadedFile[] = []
 
-  fileArray.forEach((file) => {
+  for (const file of fileArray) {
     const error = validateFile(file)
     if (!error) {
-      const id = Math.random().toString(36).substr(2, 9)
-      const preview = URL.createObjectURL(file)
-      newFiles.push({ file, preview, id })
+      try {
+        const compressed = await imageCompression(file, {
+          maxSizeMB: 1.5,         // Compress to ~1.5MB max
+          maxWidthOrHeight: 1920, // Resize to fit (optional)
+          useWebWorker: true,
+        })
+
+        const id = Math.random().toString(36).substr(2, 9)
+        const preview = URL.createObjectURL(compressed)
+
+        newFiles.push({ file: compressed, preview, id })
+      } catch (compressionError) {
+        console.error("Compression failed:", compressionError)
+      }
     } else {
       alert(`Error with ${file.name}: ${error}`)
     }
-  })
+  }
 
   setUploadedFiles((prev) => {
     const totalFiles = prev.length + newFiles.length
@@ -127,7 +124,6 @@ const processFiles = useCallback((files: FileList | File[]) => {
     return [...prev, ...newFiles]
   })
 }, [])
-
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -148,7 +144,6 @@ const processFiles = useCallback((files: FileList | File[]) => {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault()
     setIsDragOver(false)
-
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       processFiles(e.dataTransfer.files)
     }
@@ -157,7 +152,6 @@ const processFiles = useCallback((files: FileList | File[]) => {
   const removeFile = (id: string) => {
     setUploadedFiles((prev) => {
       const updated = prev.filter((f) => f.id !== id)
-      // Clean up object URL
       const fileToRemove = prev.find((f) => f.id === id)
       if (fileToRemove) {
         URL.revokeObjectURL(fileToRemove.preview)
@@ -192,7 +186,6 @@ const processFiles = useCallback((files: FileList | File[]) => {
 
       if (result.success) {
         setIsSubmitted(true)
-        // Reset form after 3 seconds
         setTimeout(() => {
           setIsSubmitted(false)
           setFormData({
@@ -202,7 +195,6 @@ const processFiles = useCallback((files: FileList | File[]) => {
             serviceAddress: "",
             message: "",
           })
-          // Clean up file previews
           uploadedFiles.forEach((file) => URL.revokeObjectURL(file.preview))
           setUploadedFiles([])
           setSelectedDate("")

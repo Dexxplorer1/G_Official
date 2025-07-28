@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.garbaggioservices.com
+
+# Sitemaps
+Sitemap: https://www.garbaggioservices.com/sitemap.xml
